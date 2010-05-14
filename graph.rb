@@ -1,5 +1,5 @@
 require "util"
-class Grafo
+class Graph
   attr_accessor :list
   attr_accessor :adj_list
 
@@ -8,27 +8,27 @@ class Grafo
     @adj_list = {}
   end
 
-  def add_vertice(v)
+  def add_vertex(v)
     @list << v
   end
 
-  def add_aresta(v1, v2, valor)
+  def add_edge(v1, v2, value)
     if @adj_list[v1].is_a?(Hash)
-      @adj_list[v1][v2] = valor
+      @adj_list[v1][v2] = value
     else
-      @adj_list[v1] = {v2 => valor}
+      @adj_list[v1] = {v2 => value}
     end
   end
 
-  def adj_vertices(vertice)
-    if @adj_list[vertice].nil?
+  def adj_vertices(vertex)
+    if @adj_list[vertex].nil?
       return []
     else
-      return @adj_list[vertice].keys 
+      return @adj_list[vertex].keys 
     end
   end
 
-  def distancia(v1, v2)
+  def distance(v1, v2)
     if(v1 == v2)
       return 0
     elsif !@adj_list[v1].nil? && @adj_list[v1].keys.include?(v2)
